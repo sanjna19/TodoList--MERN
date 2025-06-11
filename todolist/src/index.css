@@ -4,9 +4,17 @@
   align-items: center;
 }
 
-.form input{
-  
+.input {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  padding: 0.25em 0.5em;
+  border: 3px solid #000;
+  outline: none;
+  color: #000;
+  background-color: #fff;
+  text-transform: uppercase;
 }
+
 
 
 .button-54 {
