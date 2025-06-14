@@ -7,13 +7,13 @@ import { BsCircleFill, BsFillCheckCircleFill, BsFillTrashFill } from 'react-icon
 function Home() {
   const [todos, setToDos] = useState([])
   useEffect(() => {
-    axios.get('https://todo-list-mern-api-eight.vercel.app/get')
+    axios.get('${import.meta.env.VITE_API_URL}/get')
     .then(result => setToDos(result.data))
     .catch(err => console.log(err))
   }, [])
 
    const handleEdit = (id) => {
-     axios.put('https://todo-list-mern-api-eight.vercel.app/update/'+id)
+     axios.put('${import.meta.env.VITE_API_URL}/update/${id}')
     .then(result => {
       location.reload()
       console.log(result)
@@ -22,7 +22,7 @@ function Home() {
    }
 
    const handleDelete = (id) =>{
-    axios.delete('https://todo-list-mern-api-eight.vercel.app/delete/'+id)
+    axios.delete('${import.meta.env.VITE_API_URL}/delete/${id}')
     .then(result => {
       location.reload()
       console.log(result)

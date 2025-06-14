@@ -4,7 +4,7 @@ import axios from 'axios'
 function Create() {
   const [ task, setTask] = useState()
   const handleAdd = () =>{
-    axios.post('https://todo-list-mern-api-eight.vercel.app/add', {task: task})
+    axios.post('${import.meta.env.VITE_API_URL}/add', {task: task})
     .then(result =>{
       location.reload(),
       console.log(result)
