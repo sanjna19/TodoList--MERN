@@ -8,7 +8,7 @@ require('dotenv').config();
 const app = express()
 app.use(cors(
     {
-        origin: ["https://todo-list-mern-frontend-teal.vercel.app/"],
+        origin: ["https://todo-list-mern-frontend-teal.vercel.app"],
         methods: ["POST","GET"],
         credentials: true
     }
