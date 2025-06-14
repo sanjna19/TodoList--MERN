@@ -13,16 +13,26 @@ const corsOptions = {
   allowedHeaders: ["Content-Type"],
   credentials: true
 };
-app.options('*', cors());
 
 app.use((req, res, next) => {
-  res.setheader("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers", 
-    "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Origin', 'https://todo-list-mern-frontend-teal.vercel.app');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204);
+  }
   next();
 });
+app.options('/',cors(corsOptions));
+// app.use((req, res, next) => {
+//   res.setheader("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers", 
+//     "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 app.use(express.json())
 
@@ -62,6 +72,14 @@ app.post('/add', (req, res) =>{
     .catch(err => res.json(err))
 
 })
+
 app.listen(3001, ()=>{
     console.log("Server is running")
 })
+
+
+// app._router.stack.forEach(r => {
+//   if (r.route && r.route.path) {
+//     console.log('Route:', r.route.path);
+//   }
+// });
