@@ -4,7 +4,7 @@ import axios from 'axios'
 function Create() {
   const [ task, setTask] = useState()
   const handleAdd = () =>{
-    axios.post('${import.meta.env.VITE_API_URL}/add', {task: task})
+    axios.post(`${import.meta.env.VITE_API_URL}/add`, {task})
     .then(result =>{
       location.reload(),
       console.log(result)
