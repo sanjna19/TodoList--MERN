@@ -6,13 +6,16 @@ require('dotenv').config();
 // const { default: mongoose } = require('mongoose')
 
 const app = express()
-app.use(cors(
-    {
-        origin: ["https://todo-list-mern-frontend-teal.vercel.app"],
-        methods: ["POST","GET"],
-        credentials: true
-    }
-));
+
+const corsOptions = {
+  origin: "https://todo-list-mern-frontend-teal.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+  credentials: true
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
 app.use(express.json())
 
 mongoose.connect(process.env.DB_URI).then(() => console.log('Connected to MongoDB Atlas')).catch((err) => console.log('Connection error'));
