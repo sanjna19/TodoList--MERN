@@ -17,6 +17,10 @@ app.use(express.json())
 
 mongoose.connect(process.env.DB_URI).then(() => console.log('Connected to MongoDB Atlas')).catch((err) => console.log('Connection error'));
 
+app.get("/", (req, res) => {
+    res.json("Hello")
+})
+
 app.get('/get', (req, res) =>{
     TodoModel.find()
     .then(result => res.json(result))
